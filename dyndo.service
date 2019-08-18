@@ -1,0 +1,16 @@
+[Unit]
+Description=Dynamic DNS for Digitalocean
+After=syslog.target network.target
+
+[Service]
+Environment=DO_KEY=temp_key
+User=dyndo
+Group=dyndo
+Type=simple
+ExecStart=/usr/local/bin/dyndo -domain temp_domain
+TimeoutStopSec=20
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+
