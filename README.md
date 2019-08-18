@@ -1,6 +1,6 @@
 # Dyndo
 
-Dyndo is a small dynamic DNS client for Digitalocean that uses the offical [API bindings](https://github.com/digitalocean/godo)
+Dyndo is a small dynamic DNS client for [Digitalocean](https://www.digitalocean.com/) that uses the offical [API bindings](https://github.com/digitalocean/godo)
 
 ## Download
 Download release for your architecture
@@ -22,7 +22,7 @@ sudo useradd -r dyndo
 ```
 Then download the service file:
 ```
-sudo wget https://github.com/mooneyow/dyndo/dyndo.service -O /etc/systemd/system/dyndo.service
+sudo wget https://raw.githubusercontent.com/mooneyow/dyndo/master/dyndo.service -O /etc/systemd/system/dyndo.service
 ```
 Add your API key to this file (replacing API_KEY with it):
 ```
@@ -36,13 +36,17 @@ Set restrictive permissions on the service file:
 ```
 sudo chmod 600 /etc/systemd/system/dyndo.service
 ```
+Set execute permissions on the binary:
+```
+sudo chmod +x /usr/local/bin/dyndo
+```
 Then start and enable the service:
 ```
 sudo systemctl start dyndo && sudo systemctl enable dyndo
 ```
-To check the logs:
+To check the status:
 ```
-sudo journalctl -u dyndo
+sudo systemctl status dyndo
 ```
 
 ## FAQ
